@@ -1,0 +1,59 @@
+<style lang="less">
+  .bg-view {
+    // width: 600rpx;
+    // height: 120rpx;
+    background-color: aquamarine;
+  }
+  .left-view{
+    // width: 320rpx;
+    // height: 120rpx;
+    background-color: red;
+  }
+  .title-label
+  {
+      margin-top: 15rpx;
+      margin-left: 15rpx;
+      margin-bottom: 15rpx;
+      font-size: 19rpx;
+  }
+  .list-image
+{
+    margin-right: 30rpx;
+    width: 120rpx;
+    height: 120rpx;
+
+}
+
+</style>
+<template>
+  <view class="bg-view">
+      <view class = "left-view">
+          <label class = "title-label">{{item.title}}</label>
+          <image  class = "list-image" src="https://fuss10.elemecdn.com/8/3f/bc217dd04d2a541160ba1beaa1512jpeg.jpeg?imageMogr/format/webp/thumbnail/!140x140r/gravity/Center/crop/140x140/"></image>
+      </view>
+
+  </view>
+</template>
+<script>
+  import wepy from 'wepy'
+
+  export default class Article extends wepy.component {
+    props = {
+      item: Object
+    }
+
+    data = {
+    }
+    events = {
+    }
+
+    watch = {
+    }
+
+    methods = {
+    }
+    onLoad () {
+        console.log(this.item); // mytitle
+    }
+  }
+</script>

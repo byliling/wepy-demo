@@ -1,0 +1,44 @@
+<style lang="less">
+.bg-view{
+    width: 100%;
+    height:  100%;
+    background-color: antiquewhite;
+    padding: 20rpx;
+}
+.article-item
+{
+    background-color: red;
+}
+</style>
+<template>
+<view class = "bg-view">
+    <repeat for="{{list}}" key="index" index="index" item="item">
+        <article :item="item"></article>
+    </repeat>
+    <!-- <repeat for="{{list}}" item="item"  key="index" index="index">
+            <article class = "article-item"></article>
+
+    </repeat> -->
+     <!-- <article class = "article-item"></article> -->
+
+</view>
+
+
+</template>
+
+<script>
+  import wepy from 'wepy'
+  import Article from '../components/article' 
+
+  export default class HomePage extends wepy.page {
+    config = {
+      navigationBarTitleText: 'test'
+    }
+    components = {
+        article: Article
+    }
+    data = {
+        list: [{id:1,title:'111'},{id:2,title:'222'}]
+    }
+  }
+</script>
