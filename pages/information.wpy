@@ -7,6 +7,7 @@
 
 <template>
 <view class = "bg-view">
+    <loading hidden = "{{hiddenLoading}}">正在加载</loading>
      <repeat for="{{list}}" item="item">
         <information :item = "item"></information>
     </repeat>
@@ -19,13 +20,18 @@ import wepy from 'wepy';
 import Info from '../components/info';
 
 export default class Information extends wepy.page {
-    components = {
-        information:Info
-    }
+  config = {
+    navigationBarTitleText: '要闻'
+  };
+
+  components = {
+    information: Info
+  };
 
   data = {
-    list: []
-  }
+    list: [],
+    hiddenLoading:false,
+  };
 
   methods = {
     onReachBottom() {
@@ -48,10 +54,11 @@ export default class Information extends wepy.page {
       }
     });
     wepyReq.then(d => {
+        self.hiddenLoading=true;
       var oldArray = self.list;
       var newArray = d.data.data.list;
       if (newArray.length === 0) {
-    } else {
+      } else {
         self.list = oldArray.concat(newArray);
         self.$apply();
       }

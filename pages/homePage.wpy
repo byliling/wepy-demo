@@ -10,6 +10,8 @@
 </style>
 <template>
     <scroll-view class = "article-view">
+      <loading hidden="{{hiddenLoading}}">正在加载</loading>
+
         <repeat for="{{list}}" key="index" index="index" item="item">
             <article :item="item"></article>
         </repeat>
@@ -25,13 +27,14 @@ import Article from '../components/article';
 
 export default class HomePage extends wepy.page {
   config = {
-    navigationBarTitleText: 'test'
+    navigationBarTitleText: '精选'
   };
   components = {
     article: Article
   };
   data = {
     list: [],
+    hiddenLoading: false,
     searchLoading: false, //"上拉加载"的变量，默认false，隐藏
     searchLoadingComplete: false //“没有数据”的变量，默认false，隐藏
   };
@@ -56,13 +59,13 @@ export default class HomePage extends wepy.page {
       }
     });
     wepyReq.then(d => {
+      console.log('success');
+      self.hiddenLoading = true;
       var oldArray = self.list;
       var newArray = d.data.data.list;
       if (newArray.length === 0) {
         console.log('sdhfjashdfjashdfjashdfjk');
         searchLoadingComplete: true;
-                searchLoading: true;
-
       } else {
         self.list = oldArray.concat(newArray);
         searchLoading: false;
