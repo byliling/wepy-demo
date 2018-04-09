@@ -50,13 +50,14 @@
   align-content: center;
 }
 .under-line {
+  margin-top:6rpx; 
   background-color: #e6e6e6;
   width: 100%;
   height: 2rpx;
 }
 </style>
 <template>
-  <view class="bg-view">
+  <view class="bg-view" @tap="jumpToWebView">
     <view class = "left-view">
       <view class = "title-label">{{item.title}}</view>
       <view>
@@ -89,16 +90,15 @@ export default class Article extends wepy.component {
   watch = {};
 
   methods = {
+     jumpToWebView() {
+      console.log('jumpToWebView')
+    }
   };
 
   computed = {
     getStr(str) {
       return str;
     },
-    // formatDate
-    // formatDate3(d){
-
-    // }
   };
   
 
