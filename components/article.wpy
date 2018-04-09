@@ -1,59 +1,88 @@
 <style lang="less">
-  .bg-view {
-    // width: 600rpx;
-    // height: 120rpx;
-    background-color: aquamarine;
-  }
-  .left-view{
-    // width: 320rpx;
-    // height: 120rpx;
-    background-color: red;
-  }
-  .title-label
-  {
-      margin-top: 15rpx;
-      margin-left: 15rpx;
-      margin-bottom: 15rpx;
-      font-size: 19rpx;
-  }
-  .list-image
-{
-    margin-right: 30rpx;
-    width: 120rpx;
-    height: 120rpx;
-
+.bg-view {
+  padding: 10rpx;
+  width: 100%;
+  background-color: gray;
 }
 
+.left-view {
+  display: inline-block;
+  width: 500rpx;
+  text-align: justify;
+}
+
+.title-label {
+  margin-top: 20rpx;
+  margin-left: 15rpx;
+  margin-bottom: 15rpx;
+  font-size: 38rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.time-label {
+  margin-left: 20rpx;
+  font-size: 26rpx;
+  background: "#999999";
+}
+
+.readSum-label {
+  margin-left: 20rpx;
+  font-size: 26rpx;
+  background: "#999999";
+}
+
+.right-view {
+  margin-top: 15rpx;
+  margin-right: 10rpx;
+  width: 200rpx;
+  height: 150rpx;
+  display: inline-block;
+}
+
+.list-image {
+  margin-left: 20rpx;
+  width: 100%;
+  height: 100%;
+  align-content: center;
+}
 </style>
 <template>
   <view class="bg-view">
-      <view class = "left-view">
-          <label class = "title-label">{{item.title}}</label>
-          <image  class = "list-image" src="https://fuss10.elemecdn.com/8/3f/bc217dd04d2a541160ba1beaa1512jpeg.jpeg?imageMogr/format/webp/thumbnail/!140x140r/gravity/Center/crop/140x140/"></image>
+    <view class = "left-view">
+      <view class = "title-label">{{item.title}}</view>
+      <view>
+        <label class = "time-label">{{item.publishTime}}</label>
+        <label class = "readSum-label">{{item.fakeClickNum+item.clickNum}}次阅读量</label>
       </view>
+      
 
+    </view>
+    <view class = "right-view">
+       <image  class = "list-image" src="{{item.cover ? item.cover:'https://fuss10.elemecdn.com/8/3f/bc217dd04d2a541160ba1beaa1512jpeg.jpeg?imageMogr/format/webp/thumbnail/!140x140r/gravity/Center/crop/140x140/'}}"></image>
+    </view>
   </view>
 </template>
+
 <script>
-  import wepy from 'wepy'
+import wepy from 'wepy';
 
-  export default class Article extends wepy.component {
-    props = {
-      item: Object
-    }
+export default class Article extends wepy.component {
+  props = {
+    item: Object
+  };
 
-    data = {
-    }
-    events = {
-    }
+  data = {};
+  events = {};
 
-    watch = {
-    }
+  watch = {};
 
-    methods = {
-    }
-    onLoad () {
-        console.log(this.item); // mytitle
-    }
+  methods = {};
+  onLoad() {
+    console.log(this.item); // mytitle
   }
+}
 </script>
