@@ -1,0 +1,64 @@
+<style lang="less">
+.bg-view {
+  padding: 10rpx;
+  background-color: blue;
+}
+.title-view {
+  width: 100%;
+  height: 100%;
+  font-size: 38rpx;
+}
+.time-view {
+  margin-top: 20rpx;
+    font-size: 26rpx;
+  color:#999999
+;
+
+}
+.under-line {
+  margin-top: 6rpx;
+  background-color: #e6e6e6;
+  width: 100%;
+  height: 2rpx;
+}
+</style>
+<template>
+  <view class="bg-view" @tap="jumpToWebView">
+  <view class = "title-view">{{item.title}}</view>
+  <view class = "time-view">{{dateWxs.filter(item.publishTime)}}</view>
+ <view class="under-line"></view>
+  </view>
+</template>
+
+<script>
+import wepy from 'wepy';
+import mywxs from '../filters/date.wxs'
+
+export default class Info extends wepy.component {
+  props = {
+    item: Object
+  };
+
+  wxs = {
+    dateWxs: mywxs
+  };
+
+  data = {};
+
+  events = {};
+
+  watch = {};
+
+  methods = {
+    jumpToWebView() {
+      console.log('jumpToWebView');
+    }
+  };
+
+  computed = {};
+
+  onLoad() {
+    console.log(this.item); // mytitle
+  }
+}
+</script>

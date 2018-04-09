@@ -61,7 +61,7 @@
     <view class = "left-view">
       <view class = "title-label">{{item.title}}</view>
       <view>
-        <label class = "time-label">{{m1.filter(item.updateTime)}}{{m1.getStr('dsf')}}</label>
+        <label class = "time-label">{{m1.filter(item.updateTime)}}</label>
         <label class = "readSum-label">{{item.fakeClickNum+item.clickNum}}次阅读量</label>
       </view>
 

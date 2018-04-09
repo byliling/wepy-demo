@@ -1,0 +1,64 @@
+<style lang="less">
+.bg-view {
+  background-color: white;
+}
+</style>
+
+
+<template>
+<view class = "bg-view">
+     <repeat for="{{list}}" item="item">
+        <information :item = "item"></information>
+    </repeat>
+</view>
+  
+</template>
+
+<script>
+import wepy from 'wepy';
+import Info from '../components/info';
+
+export default class Information extends wepy.page {
+    components = {
+        information:Info
+    }
+
+  data = {
+    list: []
+  }
+
+  methods = {
+    onReachBottom() {
+      if (this.list[this.list.length - 1]) {
+        var lastObj = this.list[this.list.length - 1];
+        var moreTime = lastObj['publishTime'];
+      }
+      this.loadData(moreTime);
+    }
+  };
+  loadData(date) {
+    const self = this;
+    searchLoading: true;
+    const wepyReq = wepy.request({
+      url: 'https://kong-https.baidao.com/hxg-cms/articles',
+      data: {
+        categoryIds: 183,
+        pageSize: 20,
+        endPublishTime: date
+      }
+    });
+    wepyReq.then(d => {
+      var oldArray = self.list;
+      var newArray = d.data.data.list;
+      if (newArray.length === 0) {
+    } else {
+        self.list = oldArray.concat(newArray);
+        self.$apply();
+      }
+    });
+  }
+  onLoad() {
+    this.loadData(new Date().getTime());
+  }
+}
+</script>
