@@ -67,7 +67,7 @@
 
     </view>
     <view class = "right-view">
-       <image  class = "list-image" src="{{item.cover ? item.cover:'https://fuss10.elemecdn.com/8/3f/bc217dd04d2a541160ba1beaa1512jpeg.jpeg?imageMogr/format/webp/thumbnail/!140x140r/gravity/Center/crop/140x140/'}}"></image>
+       <image  class = "list-image" src="{{item.cover ? item.cover:'../assets/placeHolder.png'}}"></image>
     </view>
     <view class="under-line"></view>
   </view>

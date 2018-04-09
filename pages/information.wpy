@@ -2,8 +2,9 @@
 .bg-view {
   background-color: white;
 }
-.loading{
-      text-align: center;
+.loading {
+  text-align: center;
+  color: silver;
 }
 </style>
 

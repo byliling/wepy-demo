@@ -23,7 +23,7 @@ setStore(store)
 export default class extends wepy.app {
   config = {
     pages: [
-      'pages/index',
+      // 'pages/index',
       'pages/homePage',
       'pages/information'
     ],
@@ -39,11 +39,11 @@ export default class extends wepy.app {
      backgroundColor: "#ffffff",  
      borderStyle: "black",  
      list: [  
-       {  
-         pagePath: "pages/index",  
-         text: "项目",  
-         selected: true  
-       },  
+      //  {  
+      //    pagePath: "pages/index",  
+      //    text: "项目",  
+      //    selected: true  
+      //  },  
        {  
          pagePath: "pages/homePage",  
          text: "精选",    
