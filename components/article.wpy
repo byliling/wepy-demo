@@ -26,13 +26,13 @@
 .time-label {
   margin-left: 20rpx;
   font-size: 26rpx;
-  background: "#999999";
+  background: '#999999';
 }
 
 .readSum-label {
   margin-left: 20rpx;
   font-size: 26rpx;
-  background: "#999999";
+  background: '#999999';
 }
 
 .right-view {
@@ -49,38 +49,59 @@
   height: 100%;
   align-content: center;
 }
+.under-line {
+  background-color: #e6e6e6;
+  width: 100%;
+  height: 2rpx;
+}
 </style>
 <template>
   <view class="bg-view">
     <view class = "left-view">
       <view class = "title-label">{{item.title}}</view>
       <view>
-        <label class = "time-label">{{item.publishTime}}</label>
+        <label class = "time-label">{{m1.filter(item.updateTime)}}{{m1.getStr('dsf')}}</label>
         <label class = "readSum-label">{{item.fakeClickNum+item.clickNum}}次阅读量</label>
       </view>
-      
 
     </view>
     <view class = "right-view">
        <image  class = "list-image" src="{{item.cover ? item.cover:'https://fuss10.elemecdn.com/8/3f/bc217dd04d2a541160ba1beaa1512jpeg.jpeg?imageMogr/format/webp/thumbnail/!140x140r/gravity/Center/crop/140x140/'}}"></image>
     </view>
+    <view class="under-line"></view>
   </view>
 </template>
 
 <script>
-import wepy from 'wepy';
-
+import wepy from 'wepy'
+import mywxs from '../filters/date.wxs'
 export default class Article extends wepy.component {
   props = {
     item: Object
   };
 
   data = {};
+  wxs = {
+      m1: mywxs
+    }
   events = {};
 
   watch = {};
 
-  methods = {};
+  methods = {
+  };
+
+  computed = {
+    getStr(str) {
+      return str;
+    },
+    // formatDate
+    // formatDate3(d){
+
+    // }
+  };
+  
+
   onLoad() {
     console.log(this.item); // mytitle
   }

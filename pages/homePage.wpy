@@ -60,7 +60,7 @@ export default class HomePage extends wepy.page {
       var newArray = d.data.data.list;
       if(newArray.length === 0){
         console.log('sdhfjashdfjashdfjashdfjk')
-        searchLoadingComplete = true;
+        searchLoadingComplete:true;
       }
       self.list = oldArray.concat(newArray);
       searchLoading: false;
