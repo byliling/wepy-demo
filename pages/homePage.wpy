@@ -6,6 +6,11 @@
 }
 .loading {
   text-align: center;
+  color: silver;
+}
+.loading-complete {
+  color: silver;
+  text-align: center;
 }
 </style>
 <template>
@@ -16,8 +21,8 @@
             <article :item="item"></article>
         </repeat>
     </scroll-view>
-    <view class="loading" hidden="{{!searchLoading}}">正在载入更多...</view>
-    <view class="loading complete" hidden="{{!searchLoadingComplete}}">已加载全部</view>  
+    <view class="loading" hidden="{{!loadMore}}">正在载入更多...</view>
+    <view class="loading-complete" hidden="{{!noMoreData}}">--已加载全部--</view>  
 
 </template>
 
@@ -35,8 +40,8 @@ export default class HomePage extends wepy.page {
   data = {
     list: [],
     hiddenLoading: false,
-    searchLoading: false, //"上拉加载"的变量，默认false，隐藏
-    searchLoadingComplete: false //“没有数据”的变量，默认false，隐藏
+    loadMore: false, //"上拉加载"的变量，默认false，隐藏
+    noMoreData: false //“没有数据”的变量，默认false，隐藏
   };
   methods = {
     onReachBottom() {
@@ -49,7 +54,7 @@ export default class HomePage extends wepy.page {
   };
   loadData(date) {
     const self = this;
-    searchLoading: true;
+    self.loadMore = true;
     const wepyReq = wepy.request({
       url: 'https://kong-https.baidao.com/hxg-cms/articles',
       data: {
@@ -65,10 +70,12 @@ export default class HomePage extends wepy.page {
       var newArray = d.data.data.list;
       if (newArray.length === 0) {
         console.log('sdhfjashdfjashdfjashdfjk');
-        searchLoadingComplete: true;
+        self.loadMore = false;
+        self.noMoreData = true;
+        self.$apply();
       } else {
         self.list = oldArray.concat(newArray);
-        searchLoading: false;
+        self.loadMore = false;
         self.$apply();
       }
     });

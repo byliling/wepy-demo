@@ -2,6 +2,9 @@
 .bg-view {
   background-color: white;
 }
+.loading{
+      text-align: center;
+}
 </style>
 
 
@@ -12,7 +15,9 @@
         <information :item = "item"></information>
     </repeat>
 </view>
-  
+      <view class="loading" hidden="{{!loadMore}}">正在载入更多...</view>
+    <view class="loading-complete" hidden="{{!noMoreData}}">--已加载全部--</view>  
+
 </template>
 
 <script>
@@ -30,7 +35,9 @@ export default class Information extends wepy.page {
 
   data = {
     list: [],
-    hiddenLoading:false,
+    hiddenLoading: false,
+    loadMore: false, //"上拉加载"的变量，默认false，隐藏
+    noMoreData: false //“没有数据”的变量，默认false，隐藏
   };
 
   methods = {
@@ -44,7 +51,7 @@ export default class Information extends wepy.page {
   };
   loadData(date) {
     const self = this;
-    searchLoading: true;
+    self.loadMore = true;
     const wepyReq = wepy.request({
       url: 'https://kong-https.baidao.com/hxg-cms/articles',
       data: {
@@ -54,12 +61,16 @@ export default class Information extends wepy.page {
       }
     });
     wepyReq.then(d => {
-        self.hiddenLoading=true;
+      self.hiddenLoading = true;
       var oldArray = self.list;
       var newArray = d.data.data.list;
       if (newArray.length === 0) {
+        self.loadMore = false;
+        self.noMoreData = true;
+        self.$apply();
       } else {
         self.list = oldArray.concat(newArray);
+        self.loadMore = false;
         self.$apply();
       }
     });
