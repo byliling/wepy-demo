@@ -25,7 +25,9 @@ export default class extends wepy.app {
     pages: [
       // 'pages/index',
       'pages/homePage',
-      'pages/information'
+      'pages/information',
+      'pages/sevenNews',
+      'pages/item'
     ],
     window: {
       backgroundTextStyle: 'light',
@@ -53,7 +55,16 @@ export default class extends wepy.app {
          pagePath: "pages/information",  
          text: "要闻",    
          selected: false  
-       }
+       },
+        {  
+         pagePath: "pages/sevenNews",  
+         text: "7*24",    
+         selected: false  
+       },{  
+         pagePath: "pages/item",  
+         text: "item",    
+         selected: false  
+       },
      ],  
      position: "top"  
    }  

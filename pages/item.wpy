@@ -1,0 +1,141 @@
+<template>
+  <view class="container">
+    <view class="header">
+      <input type="text" placeholder="🔍 请输入股票代码／全拼／首字母" class="stock-input" />
+    </view>
+    <view class="main">
+      <view class="avtar">
+        <image class="avtar-img" src="https://is3-ssl.mzstatic.com/image/thumb/Purple128/v4/87/b1/bd/87b1bd7a-f80c-fe9a-d233-21edd525161e/AppIcon-1x_U007emarketing-85-220-0-6.png/246x0w.jpg"></image>
+        <text class="avtat-text">我的主页</text>
+      </view>
+      <view class="concern">
+        我的关注
+      </view>
+      <view class="add-concern">
+        <view class="icon-add-concern">
+          <image class="add-icon" src="../../assets/add.png"></image>
+        </view>
+        <view class="icon-add-text">
+          <text class="add-text">暂无关注，点击添加</text>
+        </view>
+      </view>
+    </view>
+    <view class="content">
+      最近参与
+      <image class="arraw" src="../../assets/arraw.png"></image>
+    </view>
+  </view>
+</template>
+<script>
+import wepy from 'wepy'
+export default class Item extends wepy.component {
+  components = {};
+  data = {};
+  methods = {};
+
+  events = {};
+}
+</script>
+
+<style lang="css">
+  .container {
+    background: rgb(238, 238, 238);
+  }
+  .header {
+    background: #ffffff;
+    padding: 36rpx 24rpx;
+  }
+  .stock-input {
+    width: 558rpx;
+    height: 72rpx;
+    background: rgb(238, 238, 238);
+    border-radius: 36rpx;
+    font-size: 26rpx;
+    padding: 0 72rpx;
+  }
+  .stock-input {
+
+  }
+  .main {
+    width: 702rpx;
+    height: 500rpx;
+    padding: 0 24rpx;
+    background: #fff;
+    margin-top: 18rpx;
+  }
+  .avtar {
+    height: 108rpx;
+    background: #fff;
+    border-bottom: 1rpx solid rgb(230, 230, 230);
+    position: relative;
+  }
+  .avtar-img {
+    position: absolute;
+    left: 0;
+    top: 24rpx;
+    width: 60rpx;
+    height: 60rpx;
+    border-radius: 50%;
+  }
+  .avtat-text {
+    position: absolute;
+    left: 70rpx;
+    top: 40rpx;
+    font-size: 28rpx;
+    line-height: 28rpx;
+    color: rgb(51, 51, 51);
+    font-family: "PingFangSC-Regular";
+  }
+  .concern {
+    margin-top: 31rpx;
+    padding-left: 12rpx;
+    font-family: "PingFangSC-Regular";
+    font-size: 30rpx;
+    color: rgb(51, 51, 51);
+    line-height: 30rpx;
+  }
+  .concern::before {
+    content: '';
+    line-height: 30rpx;
+    border-left: 4rpx solid rgb(255, 86, 64);
+  }
+  .icon-add-concern {
+    height: 120rpx;
+    margin-top: 70rpx;
+    text-align: center;
+  }
+  .add-icon {
+    width: 120rpx;
+    height: 120rpx;
+  }
+  .icon-add-text {
+    margin-top: 18rpx;
+    text-align: center;
+    color: rgb(204, 204, 204);
+    font-size: 28rpx;
+  }
+  .content {
+    width: 750rpx;
+    height: 98rpx;
+    margin-top: 18rpx;
+    background: #ffffff;
+    font-size: 30rpx;
+    color: rgb(51, 51, 51);
+    line-height: 98rpx;
+    position: relative;
+  }
+  .content::before {
+    content: '';
+    height: 30rpx;
+    margin-left: 24rpx;
+    border-left: 4rpx solid rgb(255, 86, 64);
+  }
+  .arraw {
+    height: 30rpx;
+    width: 30rpx;
+    float: right;
+    margin-right: 31rpx;
+    margin-top: 34rpx;
+    transform: rotate(180deg)
+  }
+</style>

@@ -1,0 +1,164 @@
+<style lang="less">
+.mainBg {
+  background-color: rgb(238, 238, 238);
+}
+.headView {
+  background-color: #ffffff;
+  padding: 36rpx 36rpx;
+}
+.input {
+  height: 72rpx;
+  width: 558rpx;
+  background: rgb(238, 238, 238);
+  border-radius: 36rpx;
+  font-size: 26rpx;
+  padding: 0 72rpx;
+}
+// ------------
+// .middleView {
+//   margin-top: 24rpx;
+//   background-color: rgb(230, 230, 230);
+//   width: 750rpx;
+//   display: inline-block;
+//   position: relative;
+// }
+// .avater {
+//   margin: 24rpx;
+//   width: 60rpx;
+//   height: 60rpx;
+//   border-radius: 50%;
+//   display: inline-block;
+// }
+// .myConcern {
+
+//   display: inline-block;
+//   line-height: 108rpx;
+//   position: absolute;
+//   margin:0 auto;
+//   height:108rpx;
+// }
+
+//2绝对定位--------------------
+// .middleView {
+//   margin-top: 24rpx;
+//   background-color: rgb(230, 230, 230);
+//   width: 750rpx;
+//   display: inline-block;
+//   position: relative;
+// }
+// .avater {
+//   margin: 24rpx;
+//   width: 60rpx;
+//   height: 60rpx;
+//   border-radius: 50%;
+//   display: inline-block;
+// }
+// .myConcern {
+//   position: absolute;
+//   display: inline-block;
+//   line-height: 36rpx;
+//   height: 36rpx;
+//   top: 46rpx;
+// }
+
+.middleView {
+  margin-top: 24rpx;
+  background-color: rgb(230, 230, 230);
+  width: 750rpx;
+  display: flex;
+  background-color: white;
+}
+.avater {
+  margin: 24rpx;
+  width: 60rpx;
+  height: 60rpx;
+  border-radius: 50%;
+}
+.myConcern {
+  line-height: 36rpx;
+  font-family: 'PingFangSC-Regular';
+  font-size: 30rpx;
+  margin-top: 36rpx;
+  display: 1;
+}
+.contentView {
+  margin-left: 24rpx;
+  background-color: white;
+  font-size: 30rpx;
+  line-height: 30rpx;
+  font-family: 'PingFangSC-Regular';
+  padding-left: 12rpx;
+  padding-top: 12rpx;
+  padding-bottom: 12rpx;
+  border-left: 4rpx solid red;
+}
+.addContent {
+  background: white;
+  display: flex;
+  flex-direction: column;
+  color: rgb(204, 204, 204);
+}
+.addImage {
+  // margin-top: 80rpx;
+  width: 120rpx;
+  height: 120rpx;
+  margin: 20rpx auto 20rpx auto;
+  // display:flex;
+  // justify-content: center;
+  // margin-left: 315rpx;
+}
+.addText {
+  margin-top: 0rpx;
+  margin-bottom: 36rpx;
+  text-align: center;
+}
+.footerView {
+  background-color: white;
+  margin-top: 6rpx;
+  margin-left: 24rpx;
+  font-size: 30rpx;
+  color: rgb(51, 51, 51);
+  line-height: 30rpx;
+  border-left: 4rpx solid red;
+}
+</style>
+<template>
+<view class="mainBg">
+    <view class="headView" >
+      <input placeholder='请输入股票代码／全拼／首字母' class="input">
+    </view>
+    <view class="middleView">
+      <image class="avater" src="https://is3-ssl.mzstatic.com/image/thumb/Purple128/v4/87/b1/bd/87b1bd7a-f80c-fe9a-d233-21edd525161e/AppIcon-1x_U007emarketing-85-220-0-6.png/246x0w.jpg"></image>
+      <view class="myConcern">我的主页</view>   
+    </view>
+    <view class="contentView">我的关注</view>
+    <view class="addContent">
+      <image class="addImage" src="https://is3-ssl.mzstatic.com/image/thumb/Purple128/v4/87/b1/bd/87b1bd7a-f80c-fe9a-d233-21edd525161e/AppIcon-1x_U007emarketing-85-220-0-6.png/246x0w.jpg"></image>
+      <view class="addText">暂无关注,点击添加</view>
+    </view>
+    <view class="footerView" >最近参与</view>
+</view>
+    
+</template>
+
+<script>
+import wepy from 'wepy';
+
+export default class SevenNews extends wepy.page {
+  config = {
+    navigationBarTitleText: '7*24'
+  };
+  components = {};
+  data = {
+    list: [],
+    hiddenLoading: false,
+    loadMore: false, //"上拉加载"的变量，默认false，隐藏
+    noMoreData: false //“没有数据”的变量，默认false，隐藏
+  };
+  methods = {
+    onReachBottom() {}
+  };
+  loadData(date) {}
+  onLoad() {}
+}
+</script>

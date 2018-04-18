@@ -29,6 +29,7 @@
 <script>
 import wepy from 'wepy';
 import Article from '../components/article';
+import * as articlesApi from '../api/homePage.js';
 
 export default class HomePage extends wepy.page {
   config = {
@@ -80,8 +81,28 @@ export default class HomePage extends wepy.page {
       }
     });
   }
-  onLoad() {
+  async testAsync() {
+    return 'hello async';
+  }
+  async onLoad() {
+    articlesApi
+      .fetchHomePageLists({ endPublishTime: new Date().getTime() })
+      .then(a => {
+        console.log(a.data);
+      });
+    const a = await articlesApi.fetchHomePageLists({
+      endPublishTime: new Date().getTime()
+    });
+    console.log(a);
+
     this.loadData(new Date().getTime());
+
+    const result = this.testAsync();
+    console.log('oooooooo' + result); //返回promise对象
+
+    const resultThen = this.testAsync().then(v => {
+      console.log('oooooooo' + result);
+    });
   }
 }
 </script>
